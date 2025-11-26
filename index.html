@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Finanças - Gestão Financeira Pessoal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>💰 Minhas Finanças</h1>
+                <p>Controle seu dinheiro mês a mês</p>
+            </div>
+        </header>
+
+        <!-- Navegação -->
+        <nav class="navbar">
+            <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-btn" data-tab="adicionar">Adicionar Transação</button>
+            <button class="nav-btn" data-tab="historico">Histórico</button>
+            <button class="nav-btn" data-tab="relatorio">Relatório</button>
+        </nav>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="tab-content active">
+            <div class="dashboard-grid">
+                <div class="card card-receita">
+                    <h3>Receita Total</h3>
+                    <p class="valor" id="totalReceita">R$ 0,00</p>
+                </div>
+                <div class="card card-despesa">
+                    <h3>Despesa Total</h3>
+                    <p class="valor" id="totalDespesa">R$ 0,00</p>
+                </div>
+                <div class="card card-economia">
+                    <h3>Economia do Mês</h3>
+                    <p class="valor" id="totalEconomia">R$ 0,00</p>
+                </div>
+            </div>
+
+            <div class="resumo-mes">
+                <h2>Resumo do Mês Atual</h2>
+                <div class="mes-selector">
+                    <button id="mesAnterior" class="btn-mes">← Mês Anterior</button>
+                    <span id="mesSelecionado" class="mes-display"></span>
+                    <button id="mesProximo" class="btn-mes">Próximo Mês →</button>
+                </div>
+                <div id="resumoDetalhado" class="resumo-detalhado"></div>
+            </div>
+        </section>
+
+        <!-- Adicionar Transação -->
+        <section id="adicionar" class="tab-content">
+            <div class="form-container">
+                <h2>Adicionar Nova Transação</h2>
+                <form id="formularioTransacao">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Transação:</label>
+                        <select id="tipo" required>
+                            <option value="">Selecione...</option>
+                            <option value="receita">Receita</option>
+                            <option value="despesa">Despesa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria:</label>
+                        <select id="categoria" required>
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição:</label>
+                        <input type="text" id="descricao" placeholder="Ex: Salário, Supermercado, etc." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valor">Valor (R$):</label>
+                        <input type="number" id="valor" step="0.01" min="0" placeholder="0,00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Adicionar Transação</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Histórico -->
+        <section id="historico" class="tab-content">
+            <div class="historico-container">
+                <h2>Histórico de Transações</h2>
+                <div class="filtros">
+                    <input type="month" id="filtroMes" class="input-filtro">
+                    <select id="filtroTipo" class="input-filtro">
+                        <option value="">Todos os Tipos</option>
+                        <option value="receita">Receita</option>
+                        <option value="despesa">Despesa</option>
+                    </select>
+                    <button id="btnLimparFiltros" class="btn-secondary">Limpar Filtros</button>
+                </div>
+                <div id="listaTransacoes" class="lista-transacoes"></div>
+            </div>
+        </section>
+
+        <!-- Relatório -->
+        <section id="relatorio" class="tab-content">
+            <div class="relatorio-container">
+                <h2>Relatório Mensal</h2>
+                <div class="relatorio-mes">
+                    <label for="relatorioMes">Selecione o Mês:</label>
+                    <input type="month" id="relatorioMes" class="input-filtro">
+                </div>
+                <div id="conteudoRelatorio" class="conteudo-relatorio"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

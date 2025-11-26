@@ -1,0 +1,563 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-primaria: #2563eb;
+    --cor-receita: #10b981;
+    --cor-despesa: #ef4444;
+    --cor-economia: #f59e0b;
+    --cor-fundo: #f9fafb;
+    --cor-card: #ffffff;
+    --cor-texto: #1f2937;
+    --cor-texto-claro: #6b7280;
+    --cor-borda: #e5e7eb;
+    --sombra: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --sombra-grande: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #1e40af 100%);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: var(--sombra-grande);
+}
+
+.header-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header-content p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background: var(--cor-card);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--sombra);
+}
+
+.nav-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 20px;
+    border: 2px solid var(--cor-borda);
+    background: white;
+    color: var(--cor-texto);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.nav-btn.active {
+    background: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
+}
+
+/* Tabs */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dashboard */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--cor-card);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-grande);
+    border-left: 5px solid var(--cor-primaria);
+}
+
+.card h3 {
+    font-size: 0.95em;
+    color: var(--cor-texto-claro);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card .valor {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.card-receita {
+    border-left-color: var(--cor-receita);
+}
+
+.card-receita .valor {
+    color: var(--cor-receita);
+}
+
+.card-despesa {
+    border-left-color: var(--cor-despesa);
+}
+
+.card-despesa .valor {
+    color: var(--cor-despesa);
+}
+
+.card-economia {
+    border-left-color: var(--cor-economia);
+}
+
+.card-economia .valor {
+    color: var(--cor-economia);
+}
+
+/* Resumo do Mês */
+.resumo-mes {
+    background: var(--cor-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-grande);
+}
+
+.resumo-mes h2 {
+    margin-bottom: 20px;
+    color: var(--cor-texto);
+}
+
+.mes-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-mes {
+    padding: 10px 20px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-mes:hover {
+    background: #1d4ed8;
+}
+
+.mes-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--cor-primaria);
+    min-width: 150px;
+    text-align: center;
+}
+
+.resumo-detalhado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.resumo-item {
+    background: var(--cor-fundo);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--cor-primaria);
+}
+
+.resumo-item.receita {
+    border-left-color: var(--cor-receita);
+}
+
+.resumo-item.despesa {
+    border-left-color: var(--cor-despesa);
+}
+
+.resumo-item-label {
+    font-size: 0.9em;
+    color: var(--cor-texto-claro);
+    margin-bottom: 8px;
+}
+
+.resumo-item-valor {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.resumo-item.receita .resumo-item-valor {
+    color: var(--cor-receita);
+}
+
+.resumo-item.despesa .resumo-item-valor {
+    color: var(--cor-despesa);
+}
+
+/* Formulário */
+.form-container {
+    background: var(--cor-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-grande);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    margin-bottom: 25px;
+    color: var(--cor-texto);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background: var(--cor-borda);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+/* Histórico */
+.historico-container {
+    background: var(--cor-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-grande);
+}
+
+.historico-container h2 {
+    margin-bottom: 20px;
+}
+
+.filtros {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.input-filtro {
+    padding: 10px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.input-filtro:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+}
+
+.lista-transacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transacao-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--cor-fundo);
+    border-radius: 8px;
+    border-left: 4px solid var(--cor-primaria);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transacao-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--sombra-grande);
+}
+
+.transacao-item.receita {
+    border-left-color: var(--cor-receita);
+}
+
+.transacao-item.despesa {
+    border-left-color: var(--cor-despesa);
+}
+
+.transacao-info {
+    flex: 1;
+}
+
+.transacao-descricao {
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 5px;
+}
+
+.transacao-meta {
+    font-size: 0.9em;
+    color: var(--cor-texto-claro);
+}
+
+.transacao-valor {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.transacao-item.receita .transacao-valor {
+    color: var(--cor-receita);
+}
+
+.transacao-item.despesa .transacao-valor {
+    color: var(--cor-despesa);
+}
+
+.btn-deletar {
+    padding: 8px 12px;
+    background: #fee2e2;
+    color: var(--cor-despesa);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-deletar:hover {
+    background: #fecaca;
+}
+
+.vazio {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--cor-texto-claro);
+}
+
+.vazio p {
+    font-size: 1.1em;
+}
+
+/* Relatório */
+.relatorio-container {
+    background: var(--cor-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-grande);
+}
+
+.relatorio-container h2 {
+    margin-bottom: 20px;
+}
+
+.relatorio-mes {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.relatorio-mes label {
+    font-weight: 600;
+}
+
+.conteudo-relatorio {
+    display: grid;
+    gap: 20px;
+}
+
+.relatorio-secao {
+    background: var(--cor-fundo);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.relatorio-secao h3 {
+    margin-bottom: 15px;
+    color: var(--cor-texto);
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: 10px;
+}
+
+.relatorio-linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.relatorio-linha:last-child {
+    border-bottom: none;
+}
+
+.relatorio-label {
+    color: var(--cor-texto-claro);
+}
+
+.relatorio-valor {
+    font-weight: 600;
+}
+
+.relatorio-total {
+    background: var(--cor-primaria);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.relatorio-total h4 {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.relatorio-total .valor {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2em;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-btn {
+        min-width: 100%;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transacao-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .transacao-valor {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .mes-selector {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .input-filtro {
+        width: 100%;
+    }
+}
