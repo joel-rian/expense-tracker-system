@@ -391,3 +391,5 @@ function formatarMoeda(valor) {
         currency: 'BRL'
     }).format(valor);
 }
+
+
