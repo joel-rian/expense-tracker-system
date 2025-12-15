@@ -9,7 +9,7 @@ This project demonstrates a modern front-end structure, clean UI components, and
 
 | Area | Technologies |
 |------|---------------|
-| **Frontend** | React (or Next.js), Tailwind CSS |
+| **Frontend** | React, Tailwind CSS |
 | **State Management** | Context API / React Hooks |
 | **Backend** | Node.js + Express |
 | **Database** | PostgreSQL / Prisma ORM |
